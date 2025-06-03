@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Fennec Fox",
+    "type": "Mammal",
+    "color": "Tan",
+    "location": "Sahara Desert"
+  },
+  {
+    "name": "Peacock",
+    "type": "Bird",
+    "color": "Blue and Green",
+    "location": "India"
+  }
+]
