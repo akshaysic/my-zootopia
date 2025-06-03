@@ -30,7 +30,30 @@ def build_html(template_path, output_path, animal_info):
     with open(output_path, "w") as output_file:
         output_file.write(html_content)
 
+def generate_animal_cards(data):
+    """Generates styled HTML <li> card items with animal info."""
+    output = ""
+    for animal in data:
+        output += '<li class="cards__item">\n'
+
+        if "name" in animal:
+            output += f'  <div class="card__title">{animal["name"]}</div>\n'
+
+        output += '  <p class="card__text">\n'
+        if "diet" in animal:
+            output += f'    <strong>Diet:</strong> {animal["diet"]}<br/>\n'
+        if "locations" in animal and animal["locations"]:
+            output += f'    <strong>Location:</strong> {animal["locations"][0]}<br/>\n'
+        if "type" in animal:
+            output += f'    <strong>Type:</strong> {animal["type"]}<br/>\n'
+        output += '  </p>\n'
+
+        output += '</li>\n'
+    return output
+
+
+
 # Load data and generate the HTML
 animals_data = load_data("animals_data.json")
-animal_info_text = generate_animal_text(animals_data)
+animal_info_text = generate_animal_cards(animals_data)
 build_html("animals_template.html", "animals.html", animal_info_text)
